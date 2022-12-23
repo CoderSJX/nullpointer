@@ -1,47 +1,24 @@
 ---
-sidebar_position: 1
+title: 小站简介
 ---
 
-# Tutorial Intro
 
-Let's discover **Docusaurus in less than 5 minutes**.
+## 自我介绍
 
-## Getting Started
+一名Java程序员，同时也会点前端，UI设计。
 
-Get started by **creating a new site**.
+爱好学习，喜欢看书。
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+![qrCode](https://www.nullpointer.site/images/qrcode.png)
 
-### What you'll need
 
-- [Node.js](https://nodejs.org/en/download/) version 16.14 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
 
-## Generate a new site
+## 写这个网站的目的
+分享各种好东西给大家。
 
-Generate a new Docusaurus site using the **classic template**.
+总结技术、记录自己成长的点点滴滴。
 
-The classic template will automatically be added to your project after you run the command:
+也是帮助大家少踩坑。
 
-```bash
-npm init docusaurus@latest my-website classic
-```
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
 
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.

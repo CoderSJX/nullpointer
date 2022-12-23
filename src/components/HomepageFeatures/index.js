@@ -4,32 +4,29 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
+    title: '大量的好物收藏',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+       收集了大量优秀的设计网站、工具网站、技术文章，不管你是做开发，还是文书工作，亦或是日常生活，都能发现你想要的东西
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: '丰富的个人经验总结',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+      包含了从<code>JavaScript</code>、<code>Vue</code>、<code>Java</code>、数据库、运维、测试等丰富的技术经验文章，可能正是你想解决的问题
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: '全面的网络资源收集',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        只有互联网上不存在的，没有我找不到的。各类电子书、视频、软件资源，我都可以找的到。
       </>
     ),
   },
