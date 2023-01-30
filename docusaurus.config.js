@@ -122,7 +122,8 @@ const config = {
         apiKey: 'dd1f1def34fa5d4ac8d70a2cdb235533',
 
         indexName: 'ideaxiaoshi',
-
+        startUrls: ['https://www.nullpointer.site/'],
+        sitemaps: ['https://www.nullpointer.site/sitemap.xml'],
       },
     }),
 };
