@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'idea 小时',
   tagline: '相信我，这绝对是个好网站',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://www.nullpointer.site',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
