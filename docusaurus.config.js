@@ -114,6 +114,16 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      algolia: {
+        // Algolia 提供的应用 ID
+        appId: 'MWUVE6GOK6',
+
+        //  公开 API 密钥：提交它没有危险
+        apiKey: 'dd1f1def34fa5d4ac8d70a2cdb235533',
+
+        indexName: 'ideaxiaoshi',
+
+      },
     }),
 };
 
