@@ -4,58 +4,58 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: '大量的好物收藏',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: '广泛的好物收藏',
+    Svg: require('@site/static/img/undraw_firmware_re_fgdy.svg').default,
     description: (
-      <>
-       收集了大量优秀的设计网站、工具网站、技术文章，不管你是做开发，还是文书工作，亦或是日常生活，都能发现你想要的东西
-      </>
+        <>
+          收录了一系列优秀的设计资源、实用工具及技术文章，无论你从事开发工作、文档撰写，还是日常生活中遇到问题，都能在此找到有价值的信息
+        </>
     ),
   },
   {
-    title: '丰富的个人经验总结',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: '扎实的经验分享',
+    Svg: require('@site/static/img/undraw_engineering_team_a7n2.svg').default,
     description: (
-      <>
-      包含了从<code>JavaScript</code>、<code>Vue</code>、<code>Java</code>、数据库、运维、测试等丰富的技术经验文章，可能正是你想解决的问题
-      </>
+        <>
+          提供涵盖<code>JavaScript</code>、<code>Vue</code>、<code>Java</code>、数据库、运维、测试等多个领域的实践经验，或许能为你在解决问题时提供参考
+        </>
     ),
   },
   {
-    title: '全面的网络资源收集',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: '全面的网络资源索引',
+    Svg: require('@site/static/img/undraw_drag_re_shc0.svg').default,
     description: (
-      <>
-        只有互联网上不存在的，没有我找不到的。各类电子书、视频、软件资源，我都可以找的到。
-      </>
+        <>
+          力求覆盖广泛的网络资源，包括电子书、教学视频以及各类实用软件，力求满足用户多样化的查找需求
+        </>
     ),
   },
 ];
 
 function Feature({Svg, title, description}) {
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+      <div className={clsx('col col--4')}>
+        <div className="text--center">
+          <Svg className={styles.featureSvg} role="img" />
+        </div>
+        <div className="text--center padding-horiz--md">
+          <h3>{title}</h3>
+          <p>{description}</p>
+        </div>
       </div>
-      <div className="text--center padding-horiz--md">
-        <h3>{title}</h3>
-        <p>{description}</p>
-      </div>
-    </div>
   );
 }
 
 export default function HomepageFeatures() {
   return (
-    <section className={styles.features}>
-      <div className="container">
-        <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
-          ))}
+      <section className={styles.features}>
+        <div className="container">
+          <div className="row">
+            {FeatureList.map((props, idx) => (
+                <Feature key={idx} {...props} />
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
   );
 }

@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'idea 小时',
-  tagline: '相信我，这绝对是个好网站',
+  tagline: '种一棵树最好的时间是十年前，其次是现在。',
   url: 'https://www.nullpointer.site',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -49,7 +49,7 @@ const config = {
         title: 'idea 小时',
         logo: {
           alt: 'idea 小时',
-          src: 'img/logo.jpg',
+          src: 'img/logo.png',
         },
         items: [
           {

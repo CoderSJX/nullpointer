@@ -4,10 +4,11 @@
  * work well for content-centric websites.
  */
 @import "https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web/style.css";
-body {
+*,h1,h2,h3,h4,body {
   font-family: "LXGW WenKai Screen";
   font-weight: normal;
 }
+
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #0052d9;
