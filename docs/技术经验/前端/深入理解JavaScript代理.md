@@ -7,7 +7,7 @@ tags:
  - 深入理解
 ---
 
-![proxy-mind](https://www.nullpointer.site/images/proxy.png)
+![proxy-mind](https://cdn.jsdelivr.net/gh/CoderSJX/nullpointer@master/static/images/proxy.png)
 
 ## 描述
 
@@ -399,4 +399,3 @@ proxy.getDate(); // TypeError: 'this' is not a Date object
    // Jacob 
    ```
 
-   

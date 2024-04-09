@@ -7,7 +7,7 @@ tags:
  - 深入理解
 ---
 
-![js-obj-mind](https://www.nullpointer.site/images/js-obj-mind.png)
+![js-obj-mind](https://cdn.jsdelivr.net/gh/CoderSJX/nullpointer@master/static/images/js-obj-mind.png)
 
 ## 定义
 
@@ -208,7 +208,7 @@ console.log(Person.prototype.__proto__);
 // } 
 ```
 
-![prototype](https://www.nullpointer.site/images/prototype.png)
+![prototype](https://cdn.jsdelivr.net/gh/CoderSJX/nullpointer@master/static/images/prototype.png)
 
 isPrototypeOf()会在传入参数的[[Prototype]]指向调用它的对象时，返回 true
 

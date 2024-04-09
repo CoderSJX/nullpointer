@@ -61,7 +61,7 @@ let变量的作用域很明确，就是定义他的地方。在for循环之外�
 
 而var变量又有一个特性，var定义的全局变量自动会绑定到全局对象window上。
 
-![window](https://www.nullpointer.site/images/window.png)
+![window](https://cdn.jsdelivr.net/gh/CoderSJX/nullpointer@master/static/images/window.png)
 
 
 
