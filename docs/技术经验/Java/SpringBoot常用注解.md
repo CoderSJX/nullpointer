@@ -26,9 +26,9 @@ tags:
    server:
      name: 123
    ```
-
-   > :warning: 在yaml文件中，属性的冒号后面都有个空格，空格后面才是值。属性之间的父子层级关系靠缩进来表示。
-
+:::tip
+在yaml文件中，属性的冒号后面都有个空格，空格后面才是值。属性之间的父子层级关系靠缩进来表示。
+:::
 2. 在代码中声明类变量，并添加@Value注解
 
    ```java
@@ -71,7 +71,9 @@ tags:
 
 1. 使用之前需要引入以下依赖。复制下面代码粘贴到POM文件中，Reimport一下（快捷键Ctrl+Shift+O）即可导入。
 
-> :warning:如果不引入，IDE会检测到错误：**Spring Boot Configuration Annotation Processor not configured**.
+:::tip 
+如果不引入，IDE会检测到错误：**Spring Boot Configuration Annotation Processor not configured**.
+:::
 
 ```xml
 <dependency>
@@ -173,8 +175,9 @@ public class ServerProperties {
 
 
 
-> :sunflower: 可以不断嵌套，只需要在静态内部类一层一层地添加新的静态内部类，并为每个类添加上get、set方法即可完成多层嵌套
-
+:::tip 
+可以不断嵌套，只需要在静态内部类一层一层地添加新的静态内部类，并为每个类添加上get、set方法即可完成多层嵌套
+:::
 
 
 ### 特点

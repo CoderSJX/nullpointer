@@ -5,8 +5,9 @@
 
 闭包：引用了其他函数的函数作用域中变量的函数。
 
-> :sunrise_over_mountains: 闭包是函数，在函数中引用了其他函数的函数作用域中变量。
-
+:::tip 
+闭包是函数，在函数中引用了其他函数的函数作用域中变量。
+:::
 举例：
 
 createComparsionFunction函数中返回的匿名函数就是一个闭包，因为它引用了createComparsionFunction函数作用域中的propertyName变量。

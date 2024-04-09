@@ -408,8 +408,9 @@ export default Vue
 
 这就是Vue的庐山真面目，其实就是一个**用Function实现的类**，我们只能通过new Vue去实例化。
 
-> :confused: 有些同学看到这不禁想问，为何 Vue 不用 ES6 的 Class 去实现呢？我们往后看这里有很多 ```xxxMixin``` 的函数调用，并把 `Vue` 当参数传入，它们的功能都是给 Vue 的 prototype 上扩展一些方法（这里具体的细节会在之后的文章介绍，这里不展开），Vue 按功能把这些扩展分散到多个模块中去实现，而不是在一个模块里实现所有，这种方式是用 Class 难以实现的。这么做的好处是非常方便代码的维护和管理，这种编程技巧也非常值得我们去学习。
-
+:::tip 
+有些同学看到这不禁想问，为何 Vue 不用 ES6 的 Class 去实现呢？我们往后看这里有很多 ```xxxMixin``` 的函数调用，并把 `Vue` 当参数传入，它们的功能都是给 Vue 的 prototype 上扩展一些方法（这里具体的细节会在之后的文章介绍，这里不展开），Vue 按功能把这些扩展分散到多个模块中去实现，而不是在一个模块里实现所有，这种方式是用 Class 难以实现的。这么做的好处是非常方便代码的维护和管理，这种编程技巧也非常值得我们去学习。
+:::
 
 
 ### 初始化全局API
@@ -462,8 +463,9 @@ export function initGlobalAPI (Vue: GlobalAPI) {
 }
 ```
 
-> :smile: [Vue官方指南中的那些全局API](https://cn.vuejs.org/v2/api/#全局-API)，这里面的东西之前一直不会用，现在可以看源代码了。
-
+:::tip 
+[Vue官方指南中的那些全局API](https://cn.vuejs.org/v2/api/#全局-API)，这里面的东西之前一直不会用，现在可以看源代码了。
+:::
 1. [Vue.extend](https://cn.vuejs.org/v2/api/#Vue-extend)
 2. [Vue.nextTick](https://cn.vuejs.org/v2/api/#Vue-nextTick)
 3. [Vue.set](https://cn.vuejs.org/v2/api/#Vue-set)
@@ -477,8 +479,9 @@ export function initGlobalAPI (Vue: GlobalAPI) {
 11. [Vue.observable](https://cn.vuejs.org/v2/api/#Vue-observable)
 12. [Vue.version](https://cn.vuejs.org/v2/api/#Vue-version)
 
-> :warning: 有一点要注意的是，`Vue.util` 暴露的方法最好不要依赖，因为它可能经常会发生变化，是不稳定的。
-
+:::tip 
+有一点要注意的是，`Vue.util` 暴露的方法最好不要依赖，因为它可能经常会发生变化，是不稳定的。
+:::
 
 
 ## 数据驱动
@@ -516,24 +519,27 @@ function Vue (options) {
 
 可以看到 `Vue` 只能通过 new 关键字初始化，然后会调用 `this._init` 方法， 该方法在 `src/core/instance/init.js` 中定义。
 
-> :bulb: $options中的$符号并不是什么语法和关键字，而是为了让用户区分vue中的变量和用户自定义的变量而已，只是加了个前缀字符，加$为了表示特殊含义。
+:::tip 
+$options中的$符号并不是什么语法和关键字，而是为了让用户区分vue中的变量和用户自定义的变量而已，只是加了个前缀字符，加$为了表示特殊含义。
+:::
+:::tip 
+**\`vue-perf-start:${vm._uid}\`**是插值表达式，配合${XXX}，取到XXX变量的值，注意两侧有\`\`号。
+:::
+:::tip 
 
-> :star2: **\`vue-perf-start:${vm._uid}\`**是插值表达式，配合${XXX}，取到XXX变量的值，注意两侧有\`\`号。
 
-> :tada:
->
-> #### ES6中
->
-> es6中也可以采用${XXX}来在字符串中插入变量（这个记住要利用v-bind）
->
-> ##### jquery中
->
-> 利用$作为选择器，其实是jquery库对原生JavaScript对选择元素进行的一种封装！
->
-> #### devtool中
->
-> $是在`console`中是冗长的函数`document.querySelector`的一个别名
+#### ES6中
 
+es6中也可以采用${XXX}来在字符串中插入变量（这个记住要利用v-bind）
+
+ ##### jquery中
+
+ 利用$作为选择器，其实是jquery库对原生JavaScript对选择元素进行的一种封装！
+
+ #### devtool中
+
+ $是在`console`中是冗长的函数`document.querySelector`的一个别名
+ :::
 ```js
 Vue.prototype._init = function (options?: Object) {
   const vm: Component = this
@@ -623,8 +629,9 @@ Vue 中我们是通过 `$mount` 实例方法去挂载 `vm` 的，`$mount` 方法
 
 如果$options中没有定义render方法，那么则会把el或template转换成render方法。
 
-> :bulb: 这里我们要牢记，在 Vue 2.0 版本中，所有 Vue 的组件的渲染最终都需要 `render` 方法，无论我们是用单文件 .vue 方式开发组件，还是写了 `el` 或者 `template` 属性，最终都会转换成 `render` 方法，那么这个过程是 Vue 的一个“在线编译”的过程，它是调用 `compileToFunctions` 方法实现的。
-
+:::tip 
+这里我们要牢记，在 Vue 2.0 版本中，所有 Vue 的组件的渲染最终都需要 `render` 方法，无论我们是用单文件 .vue 方式开发组件，还是写了 `el` 或者 `template` 属性，最终都会转换成 `render` 方法，那么这个过程是 Vue 的一个“在线编译”的过程，它是调用 `compileToFunctions` 方法实现的。
+:::
 ```js
 const mount = Vue.prototype.$mount
 Vue.prototype.$mount = function (
