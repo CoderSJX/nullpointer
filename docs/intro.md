@@ -15,7 +15,7 @@ title: 本站介绍
 
 最后，感谢您的访问，愿我们在共享智慧的同时，也能收获快乐与成就，让编程成为我们打开新世界大门的钥匙！期待你的参与和交流，一起在编程的世界里破浪前行！
 
-![qrCode](https://cdn.jsdelivr.net/gh/CoderSJX/nullpointer@master/static/images/qrcode.png)
+![qrCode](https://cdn.jsdelivr.net/gh/CoderSJX/nullpointer-images/images/qrcode.png)
 
 
 

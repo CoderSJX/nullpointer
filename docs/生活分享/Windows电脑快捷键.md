@@ -55,4 +55,4 @@
 
 有任何疑问都可以留言公众号（idea小时），看到消息我会第一时间回复。对于问的多的问题，我会出文章解答的！
 
-![qrcode](https://cdn.jsdelivr.net/gh/CoderSJX/nullpointer@master/static/images/qrcode.png)
+![qrcode](https://cdn.jsdelivr.net/gh/CoderSJX/nullpointer-images/images/qrcode.png)

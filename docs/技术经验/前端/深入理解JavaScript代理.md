@@ -7,7 +7,7 @@ tags:
  - 深入理解
 ---
 
-![proxy-mind](https://cdn.jsdelivr.net/gh/CoderSJX/nullpointer@master/static/images/proxy.png)
+![proxy-mind](https://cdn.jsdelivr.net/gh/CoderSJX/nullpointer-images/images/proxy.png)
 
 ## 描述
 

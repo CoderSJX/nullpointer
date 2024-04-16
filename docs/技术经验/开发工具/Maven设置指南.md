@@ -18,7 +18,7 @@ tags:
 
 1. 解压到某个位置，不要直接在当前目录解压，因为这是个软件，以后要经常用到，安装路径要好找。解压完成就安装完成了。
 
-![maven-path](https://cdn.jsdelivr.net/gh/CoderSJX/nullpointer@master/static/images/maven-path.png)
+![maven-path](https://cdn.jsdelivr.net/gh/CoderSJX/nullpointer-images/images/maven-path.png)
 
 1. 安装完成但是还不能用，得配置环境变量，或者在IDE中配置使用自己安装的Maven（IDEA默认使用它内置的Maven，而不是本地Maven）
 
@@ -92,7 +92,7 @@ maven默认只有一个远程仓库，位于国外，下载速度较慢。
 
 ## IDEA中使用本地Maven
 
-![maven](https://cdn.jsdelivr.net/gh/CoderSJX/nullpointer@master/static/images/maven.png)
+![maven](https://cdn.jsdelivr.net/gh/CoderSJX/nullpointer-images/images/maven.png)
 
 ## 附录（`setting.xml`文件示例）
 
