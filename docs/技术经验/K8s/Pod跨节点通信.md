@@ -20,32 +20,74 @@
 - host1中创建pod-a（ip:192.168.10.10）
 
 ```bash
+# 创建名为pod-a的网络命名空间
 ip netns add pod-a
+
+# 创建一对veth对等接口，一端为eth0，另一端为veth-pod-a
 ip link add eth0 type veth peer name veth-pod-a
+
+# 将eth0接口移动到名为pod-a的网络命名空间中
 ip link set eth0 netns pod-a
+
+# 在pod-a网络命名空间内配置eth0接口的IP地址和子网掩码
 ip netns exec pod-a ip addr add 192.168.10.10/24 dev eth0
+
+# 在pod-a网络命名空间内启动eth0接口
 ip netns exec pod-a ip link set eth0 up
+
+# 在pod-a网络命名空间内设置默认路由，通过169.254.10.24网关访问外部网络，并且指定为onlink（直接连接）
 ip netns exec pod-a ip route add default via 169.254.10.24 dev eth0 onlink
+
+# 启动veth-pod-a接口
 ip link set veth-pod-a up
+
+# 开启veth-pod-a接口上的ARP代理功能
 echo 1 > /proc/sys/net/ipv4/conf/veth-pod-a/proxy_arp
+
+# 开启系统的IP转发功能
 echo 1 > /proc/sys/net/ipv4/ip_forward
+
+# 添加iptables规则，允许来自192.168.0.0/16子网的数据包在该子网内部进行转发
 iptables -I FORWARD -s 192.168.0.0/16 -d 192.168.0.0/16 -j ACCEPT
+
+# 添加主机路由条目，将目的地址为192.168.10.10的数据包通过veth-pod-a接口转发
 ip route add 192.168.10.10 dev veth-pod-a scope link
 ```
 
 - host2上创建pod-b（ip:192.168.11.10）
 
 ```bash
+# 创建名为pod-b的网络命名空间
 ip netns add pod-b
+
+# 创建一对veth对等接口，一端为eth0，另一端为veth-pod-b
 ip link add eth0 type veth peer name veth-pod-b
+
+# 将eth0接口移动到名为pod-b的网络命名空间中
 ip link set eth0 netns pod-b
+
+# 在pod-b网络命名空间内配置eth0接口的IP地址和子网掩码
 ip netns exec pod-b ip addr add 192.168.11.10/24 dev eth0
+
+# 在pod-b网络命名空间内启动eth0接口
 ip netns exec pod-b ip link set eth0 up
+
+# 在pod-b网络命名空间内设置默认路由，通过169.254.10.24网关访问外部网络，并且指定为onlink（直接连接）
 ip netns exec pod-b ip route add default via 169.254.10.24 dev eth0 onlink
+
+# 启动veth-pod-b接口
 ip link set veth-pod-b up
+
+# 开启veth-pod-b接口上的ARP代理功能
 echo 1 > /proc/sys/net/ipv4/conf/veth-pod-b/proxy_arp
+
+# 开启系统的IP转发功能
 echo 1 > /proc/sys/net/ipv4/ip_forward
+
+# 添加iptables规则，允许来自192.168.0.0/16子网的数据包在该子网内部进行转发
 iptables -I FORWARD -s 192.168.0.0/16 -d 192.168.0.0/16 -j ACCEPT
+
+# 添加主机路由条目，将目的地址为192.168.11.10的数据包通过veth-pod-b接口转发
 ip route add 192.168.11.10 dev veth-pod-b scope link
 ```
 
