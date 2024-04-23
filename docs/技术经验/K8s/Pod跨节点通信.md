@@ -452,3 +452,25 @@ iptables -A FORWARD -t filter -s 192.168.10.10 -d 192.168.11.10 -j DROP
 `-m conntrack`是说使用连接追踪模块标识的数据包状态，`--ctstate`是connection track state（连接追踪状态）的简称，状态值有：NEW/ESTABLISHED/INVALID/RELATED等，各种状态的解释自行google；
 
 上面这条规则的优先级一般都是最高的，如果放在其它限制规则的后面就没有意义了，不单是容器平台的防火墙策略，大多数云平台网络中ACL、安全组的策略也是这种玩法；
+
+Fannel-hostgw 和 Calico BGP 是两种不同的网络插件，在Kubernetes（K8s）集群中用于实现容器网络通信。它们的设计和工作原理不同，导致了对二层（数据链路层）和三层（网络层）网络支持上的差异。
+
+**Fannel-hostgw (Flannel Host-Gateway Mode)**:
+Fannel 是一个轻量级的网络解决方案，用于在Kubernetes集群中的不同节点间创建扁平化的、可路由的网络空间。Fannel-hostgw 模式是一种特定的实现方式，其中每个节点上的主机网关（Host Gateway）负责将容器网络流量桥接到本地物理网络。在这种模式下：
+
+1. **仅支持二层网络**：Fannel-hostgw 不涉及三层路由，它依赖于每个节点上的Linux内核实现二层网络通信。容器IP地址直接与宿主机的MAC地址关联，通过ARP协议（Address Resolution Protocol）在同一个二层广播域内建立映射关系。
+
+2. **缺乏三层支持**：由于Fannel-hostgw 不具备路由功能，路由器（如边缘路由器或数据中心路由器）无法直接了解到每个Pod IP与宿主机MAC地址之间的映射。这意味着路由器的路由表中不会存储这类信息，也无法基于Pod IP进行三层路由决策。
+
+3. **通信局限性**：由于上述原因，Fannel-hostgw 部署的Kubernetes集群中，跨节点的Pod间通信必须依赖于二层网络的连通性，即所有节点必须位于同一个二层广播域内，或者通过二层桥接技术（如VLAN、TRILL等）虚拟扩展为一个逻辑二层域。对于跨越多个三层网络区域的大型集群，这种设计可能会遇到扩展性和性能瓶颈。
+
+**Calico BGP**:
+Calico 是另一种流行的Kubernetes网络解决方案，它采用边界网关协议（Border Gateway Protocol, BGP）作为核心的网络通信机制。
+
+1. **支持二、三层网络**：Calico 集成了BGP路由协议，允许每个宿主机作为一个BGP客户端与网络中的BGP路由器（如边缘路由器或支持BGP的三层交换机）建立会话。这样，每个宿主机不仅能够参与二层通信，还能够参与三层路由。
+
+2. **Pod IP到宿主机MAC映射**：当Calico启用BGP模式时，每个宿主机上的Calico agent会将其管理的Pod IP地址作为BGP路由信息发布出去。这些路由信息包含了Pod IP范围及其对应的宿主机接口（及相应的MAC地址）。这样，支持BGP的路由器就能够在其路由表中存储这些映射关系。
+
+3. **三层路由能力**：由于路由器知道了每个Pod IP与宿主机MAC地址的对应关系，它可以基于这些信息做出正确的三层路由决策，将发往Pod IP的数据包正确地转发到承载该Pod的宿主机。这意味着Calico BGP模式下的Kubernetes集群可以跨越多个三层网络区域，无需依赖二层连通性，极大地增强了网络的可扩展性和灵活性。
+
+总结起来，Fannel-hostgw 因为仅依赖二层网络通信，不支持三层路由，所以在路由器中不存在Pod IP到宿主机MAC地址的映射信息，这限制了其在复杂网络环境中的应用。而Calico BGP通过引入BGP路由协议，使得支持BGP的路由器能够获知并存储这些映射关系，从而支持跨三层网络的Pod间通信，适应大规模、多区域的Kubernetes集群部署。
