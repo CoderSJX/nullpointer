@@ -92,6 +92,8 @@ ip route add 192.168.10.0/24 via 10.57.4.20 dev eth0 onlink # 这个eth0是host2
 
 这是跨节点容器通信方式中最简单高效的方式，没有封包拆包带来的额外消耗。
 
+![img](https://cdn.jsdelivr.net/gh/CoderSJX/nullpointer-images/images/202404241050964.png)
+
 但是这个方式，也有限制。
 
 限制是：集群每个节点必须在相同网段，因为节点路由的下一跳必须是二层可达的地址。所谓二层可达，就是每一个节点上都保存有下一跳设备的MAC地址。
